@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus Navigator | AI Academic Planner</title>
+    <meta name="description" content="Generate personalized study plans and find learning resources instantly from your syllabus.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Syllabus<span class="highlight">Navigator</span></h1>
+            <p class="tagline">Your AI-Powered Academic Journey</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="input-section glass-panel" id="input-section">
+            <div class="section-header">
+                <h2>Upload Your Syllabus</h2>
+                <p>Paste your syllabus text below and let AI map out your perfect study plan.</p>
+            </div>
+            
+            <form id="syllabus-form">
+                <div class="form-group">
+                    <label for="syllabus-text">Syllabus Content</label>
+                    <textarea id="syllabus-text" placeholder="e.g. Unit 1: Introduction to Data Structures, Arrays, Linked Lists. Unit 2: Trees and Graphs..." required></textarea>
+                </div>
+                
+                <div class="form-group row">
+                    <div class="col">
+                        <label for="exam-date">Exam Date</label>
+                        <input type="date" id="exam-date" required>
+                    </div>
+                    <div class="col">
+                        <label for="study-hours">Daily Study Hours</label>
+                        <input type="number" id="study-hours" min="1" max="16" value="3" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" id="generate-btn">
+                    <span class="btn-text">Generate Study Plan</span>
+                    <div class="loader hidden" id="btn-loader"></div>
+                </button>
+            </form>
+        </section>
+
+        <section class="results-section hidden" id="results-section">
+            <div class="tabs">
+                <button class="tab-btn active" data-target="schedule-tab">Study Schedule</button>
+                <button class="tab-btn" data-target="resources-tab">Learning Resources</button>
+                <button class="tab-btn" data-target="questions-tab">Practice Questions</button>
+            </div>
+
+            <div class="tab-content active" id="schedule-tab">
+                <div class="glass-panel">
+                    <h3>Your Personalized Study Plan</h3>
+                    <div class="timeline" id="schedule-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="resources-tab">
+                <div class="resources-grid">
+                    <div class="glass-panel resource-card">
+                        <h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><polygon points="10 15 15 12 10 9 10 15"></polygon></svg> YouTube Videos</h3>
+                        <ul class="resource-list" id="youtube-container">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
+                    <div class="glass-panel resource-card">
+                        <h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Notes & PDFs</h3>
+                        <ul class="resource-list" id="notes-container">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="questions-tab">
+                <div class="glass-panel">
+                    <h3>Predicted Exam Questions</h3>
+                    <div class="questions-list" id="questions-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="actions-row">
+                <button class="btn-secondary" id="reset-btn">Start Over</button>
+                <button class="btn-primary" id="export-btn">Export Plan (PDF)</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
